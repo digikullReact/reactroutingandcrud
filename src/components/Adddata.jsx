@@ -18,12 +18,17 @@ export default function Adddata() {
 
     })
 
+    function readableRandomStringMaker(length) {
+      for (var s=''; s.length < length; s += 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.charAt(Math.random()*62|0));
+      return s;
+    }
 
     const Submit=()=>{
 
         // Gonna call the api ----->
+        state._id=readableRandomStringMaker(9)
 
-        axios.post("https://jsonplaceholder.typicode.com/posts",state).then(data=>{
+        axios.post("https://cryptic-everglades-50429.herokuapp.com/addData",state).then(data=>{
             console.log(data["data"]);
         }).catch(err=>{
             console.log(err);
